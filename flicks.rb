@@ -27,16 +27,43 @@ class Movie
     end  
 end
 
-movie1 = Movie.new("goonies", 100)
-movie2 = Movie.new("dune", 90)
+class Playlist
+
+    def initialize(name)
+        @name = name
+        @movies = []
+    end
+
+    def add_movie(movie)
+        @movies << movie
+    end
+
+    def play
+        puts "#{@name}'s playlist: "
+        puts @movies
+
+        @movies.each do |movie|
+            movie.thumbs_up
+            puts movie
+        end
+
+    end
+end
+movie1 = Movie.new("goonies", 10)
+movie2 = Movie.new("dune", 9)
 movie3 = Movie.new("batman")
 
-movies = [movie1, movie2, movie3]
+playlist1 = Playlist.new("Jay")
+playlist1.add_movie(movie1)
+playlist1.add_movie(movie2)
+playlist1.add_movie(movie3)
+playlist1.play
 
-puts movies
+playlist2 = Playlist.new("Maddie")
+playlist2.add_movie(movie3)
 
-movies.each do |m|
-    m.thumbs_up
-    puts m
-end
+movie4 = Movie.new("Spiderman", 15)
+playlist2.add_movie(movie4)
+playlist2.play
+
 
